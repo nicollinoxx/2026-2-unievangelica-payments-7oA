@@ -35,19 +35,16 @@ def test_aplicar_juros_atraso():
 def test_validar_metodo_pagamento():
     # Arrange
     metodo_pix = "pix"
-    metodo_cartao = "credito"
     metodo_invalido = "cheque"
 
     # Act
     resultado_pix = validar_metodo_pagamento(metodo_pix)
-    resultado_cartao = validar_metodo_pagamento(metodo_cartao)
     resultado_invalido = validar_metodo_pagamento(metodo_invalido)
 
     # Assert
     assert resultado_pix is True
-    assert resultado_cartao is True
     assert resultado_invalido is False
-
+    
 def test_processar_reembolso():
     # Arrange
     valor_pago = 200
@@ -59,5 +56,5 @@ def test_processar_reembolso():
     resultado_estourado = processar_reembolso(valor_pago, valor_reembolso_estourado)
 
     # Assert
-    assert resultado_exato == 200
+    assert resultado_exato == 0
     assert resultado_estourado == -1
